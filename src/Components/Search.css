@@ -1,0 +1,11 @@
+.Search {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(211, 218, 114);
+
+  height: 50px;
+  width: 700px;
+  margin: 1% 10%;
+  border-radius: 10px;
+}
