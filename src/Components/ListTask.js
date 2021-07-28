@@ -10,28 +10,35 @@ const ListTask = ({
 }) => {
   const TaskList = useSelector((state) => state.TaskList);
 
-  useEffect(() => {
-    switch (filter) {
-      case "Task complited":
-        setFilteredListTask(TaskList.filter((task) => task.Progress === 100));
-        break;
-      case "Task toDo":
-        setFilteredListTask(TaskList.filter((task) => task.Progress < 100));
-        break;
-      default:
-        setFilteredListTask(TaskList);
-    }
-  });
-
   return (
     <div>
-      {filteredListTask
-        .filter((task) =>
-          task.Name.toUpperCase().includes(inputText.toUpperCase())
-        )
-        .map((task) => (
-          <Task task={task} key={task.id} />
-        ))}
+      {filter === "Task complited" ||
+      filter === "Task toDo" ||
+      filter === "Show all"
+        ? filteredListTask
+            .filter((task) =>
+              task.Name.toUpperCase().includes(inputText.toUpperCase())
+            )
+            .map((task) => (
+              <Task
+                task={task}
+                key={task.id}
+                setFilteredListTask={setFilteredListTask}
+                filter={filter}
+                TaskList={TaskList}
+              />
+            ))
+        : TaskList.filter((task) =>
+            task.Name.toUpperCase().includes(inputText.toUpperCase())
+          ).map((task) => (
+            <Task
+              task={task}
+              key={task.id}
+              setFilteredListTask={setFilteredListTask}
+              filter={filter}
+              TaskList={TaskList}
+            />
+          ))}
     </div>
   );
 };

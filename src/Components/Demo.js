@@ -4,6 +4,7 @@ import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
 const Demo = ({ location, progress, setProgress }) => {
   const [percent, setPercent] = useState(parseInt(progress));
+  console.log(setProgress);
 
   const increase = () => {
     if (percent < 100) {

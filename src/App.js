@@ -9,6 +9,8 @@ function App() {
   const [filter, setFilter] = useState("");
   const [filteredListTask, setFilteredListTask] = useState([]);
   console.log(filter);
+
+  
   return (
     <div className="App">
       <AddTask />
